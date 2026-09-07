@@ -1,0 +1,142 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #222;
+}
+
+#root {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+h1 {
+  margin-bottom: 8px;
+  color: #861f41;
+  font-size: 38px;
+}
+
+h2 {
+  margin-top: 40px;
+  margin-bottom: 16px;
+}
+
+h3 {
+  margin-top: 28px;
+  color: #444;
+}
+
+p {
+  color: #666;
+}
+
+input,
+select {
+  padding: 10px 12px;
+  margin: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+input {
+  width: 260px;
+}
+
+button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: #861f41;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #641630;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  background-color: white;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.course-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.course-controls input {
+  margin: 0;
+  flex: 1;
+  min-width: 240px;
+}
+
+.semester-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.semester-control select {
+  margin: 0;
+}
+
+.semester-card {
+  background-color: white;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.semester-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.plan-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 16px;
+}
+
+.plan-title h2 {
+  margin: 0;
+}
+
+.clear-button {
+  background-color: #777;
+}
+
+.clear-button:hover {
+  background-color: #555;
+}
