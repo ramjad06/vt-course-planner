@@ -21,7 +21,7 @@ function App() {
   ]
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/courses")
+    fetch("https://vt-course-planner-api.onrender.com/courses")
       .then((response) => response.json())
       .then((data) => setCourses(data))
       .catch((error) => console.error("Error fetching courses:", error))
