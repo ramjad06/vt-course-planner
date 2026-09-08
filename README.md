@@ -13,6 +13,10 @@ A full-stack course planning application for Virginia Tech students to organize 
 - Save degree plans using browser localStorage
 - Clear an entire degree plan
 
+## Live Demo
+
+https://vt-course-planner.vercel.app
+
 ## Tech Stack
 
 ### Frontend
