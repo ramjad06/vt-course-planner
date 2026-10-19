@@ -16,6 +16,15 @@ app.add_middleware(
 COURSES_FILE = Path(__file__).parent / "courses.json"
 courses = json.loads(COURSES_FILE.read_text()) if COURSES_FILE.exists() else []
 
+# Fallback so the site is never empty if courses.json is missing or empty
+if not courses:
+    courses = [
+        {"code": "CS 1114", "name": "Introduction to Software Design", "credits": 3, "prerequisites": []},
+        {"code": "CS 2114", "name": "Software Design and Data Structures", "credits": 3, "prerequisites": [["CS 1114"]]},
+        {"code": "CS 2505", "name": "Introduction to Computer Organization I", "credits": 3, "prerequisites": [["CS 2114"]]},
+        {"code": "CS 3114", "name": "Data Structures and Algorithms", "credits": 3, "prerequisites": [["CS 2114"], ["CS 2505"]]},
+    ]
+
 
 @app.get("/")
 def home():
