@@ -21,7 +21,7 @@ function App() {
   ]
 
   useEffect(() => {
-    fetch("https://vt-course-planner-api.onrender.com/courses")
+    fetch(`${import.meta.env.VITE_API_URL || "https://vt-course-planner-api.onrender.com"}/courses`)
       .then((response) => response.json())
       .then((data) => setCourses(data))
       .catch((error) => console.error("Error fetching courses:", error))
@@ -45,18 +45,18 @@ function addCourse(course) {
 
   const selectedSemesterIndex = semesters.indexOf(selectedSemester)
 
-  const missingPrerequisites = course.prerequisites.filter(
-    (prerequisite) => {
-      return !plannedCourses.some((planned) => {
-        const plannedSemesterIndex = semesters.indexOf(planned.semester)
-
-        return (
-          planned.code === prerequisite &&
-          plannedSemesterIndex < selectedSemesterIndex
+  const missingPrerequisites = course.prerequisites
+    .filter((group) => {
+      const options = Array.isArray(group) ? group : [group]
+      return !options.some((prerequisite) =>
+        plannedCourses.some(
+          (planned) =>
+            planned.code === prerequisite &&
+            semesters.indexOf(planned.semester) < selectedSemesterIndex
         )
-      })
-    }
-  )
+      )
+    })
+    .map((group) => (Array.isArray(group) ? group.join(" or ") : group))
 
   if (missingPrerequisites.length > 0) {
     alert(`Missing prerequisite(s): ${missingPrerequisites.join(", ")}`)
@@ -131,8 +131,12 @@ function addCourse(course) {
   </label>
 </div>
 
+      {filteredCourses.length > 50 && (
+        <p>Showing 50 of {filteredCourses.length} courses. Keep typing to narrow it down.</p>
+      )}
+
       <ul>
-        {filteredCourses.map((course) => (
+        {filteredCourses.slice(0, 50).map((course) => (
           <li key={course.code}>
             {course.code} - {course.name} ({course.credits} credits){" "}
             <button onClick={() => addCourse(course)}>Add</button>
